@@ -6,7 +6,9 @@ import styles from "./comingsoon.module.css";
 const ComingSoon = () => {
   return (
     <div className={styles.comingSoonContainer}>
-      <h1 className={styles.comingSoonText}>Coming Soon</h1>
+      <h1 className={styles.comingSoonText}>
+        Coming Soon "THIS IS TEST BRNACH"
+      </h1>
     </div>
   );
 };

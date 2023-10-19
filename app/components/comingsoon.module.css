@@ -1,0 +1,14 @@
+.comingSoonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #ff442b;
+}
+
+.comingSoonText {
+  font-size: 36px;
+  color: white;
+  text-align: center;
+}

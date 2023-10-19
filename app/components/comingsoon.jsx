@@ -1,7 +1,11 @@
 import React from "react";
 
-function comingsoon() {
-  return <div>comingsoo</div>;
+function Comingsoon() {
+  return (
+    <div>
+      <h1>TEST BRNACH IS WORKING</h1>
+    </div>
+  );
 }
 
-export default comingsoon;
+export default Comingsoon;

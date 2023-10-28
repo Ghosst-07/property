@@ -3,7 +3,7 @@ import React from "react";
 function Comingsoon() {
   return (
     <div>
-      <h1>TEST BRNACH IS WORKING</h1>
+      <h1 className="">TEST BRNACH IS WORKING</h1>
     </div>
   );
 }

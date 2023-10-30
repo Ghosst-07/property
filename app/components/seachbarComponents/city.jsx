@@ -24,7 +24,7 @@ const SearchCity = () => {
   const cities = ["Delhi", "Lucknow", "Sitapur", "Mumbai", "Pune"];
 
   return (
-    <div className="relative flex flex-row items-center px-2 w-44">
+    <div className="relative flex flex-row items-center px-2 w-fit md:border-none border rounded-md md:mt-0 mt-1">
       <FaMapMarkerAlt className="ml-2" />
       <input
         type="text"
@@ -34,7 +34,7 @@ const SearchCity = () => {
         onChange={handleCityChange}
       />
       {showDropdown && (
-        <div className="absolute top-5 right-7 w-fit py-2 mt-3 bg-white rounded-md shadow-md">
+        <div className="z-10 absolute top-5 right-7 w-fit py-2 mt-3 bg-white rounded-md shadow-md">
           {cities
             .filter((c) => c.toLowerCase().includes(city.toLowerCase()))
             .map((c) => (

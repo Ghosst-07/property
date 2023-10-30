@@ -63,8 +63,8 @@ function SearchBudget() {
   };
 
   return (
-    <div className="relative flex flex-row items-center px-2">
-      <div className="flex flex-row items-center mr-1 ">
+    <div className="relative flex flex-row items-center px-2 w-fit border md:border-none py-2 mt-1 md:mt-0 rounded-md">
+      <div className="flex flex-row items-center mr-1  ">
         <FaRupeeSign className="mr-2" />
         <h1
           className="text-black cursor-pointer"
@@ -86,8 +86,11 @@ function SearchBudget() {
       </div>
 
       {showMinDropdown && (
-        <div className="absolute top-5 left-3 bg-white p-2 w-32 shadow-md">
-          <div className="mt-2  pr-2  max-h-40 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
+        <div className="absolute top-10 left-3 bg-white p-2 w-32 shadow-md">
+          <div
+            className="mt-2  pr-2  max-h-40 overflow-y-auto scrollbar-thin 
+          scrollbar-thumb-gray-400 scrollbar-track-gray-200"
+          >
             {budget.map((value, index) => {
               return (
                 <div
@@ -102,9 +105,11 @@ function SearchBudget() {
           </div>
         </div>
       )}
-
+      <div className="flex  md:hidden md:w-fit w-12 mr-5  justify-center text-gray-300">
+        |
+      </div>
       <h1
-        className="text-black cursor-pointer"
+        className="text-black cursor-pointer w-fit flex flex-row items-center"
         onClick={handleMaxDropdownClick}
       >
         Max: {maxBudget}
@@ -122,7 +127,7 @@ function SearchBudget() {
       )}
 
       {showMaxDropdown && (
-        <div className="absolute top-5  right-0 bg-white p-2 mr-2 w-32 shadow-md">
+        <div className="absolute top-10  right-0 bg-white p-2 mr-2 w-32 shadow-md">
           <div className=" mt-2 max-h-40 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200">
             {budget.map((value, index) => {
               return (

@@ -7,8 +7,7 @@ function SerchType() {
   const [showDropdown2, setShowDropdown2] = useState(false);
   const [showDropdown3, setShowDropdown3] = useState(false);
   const [showDropdown4, setShowDropdown4] = useState(false);
-  const [showDropdown5, setShowDropdown5] = useState(false);
-  const [showDropdown6, setShowDropdown6] = useState(false);
+
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleDropdownClick = () => {
@@ -34,7 +33,7 @@ function SerchType() {
   };
 
   return (
-    <div className="relative flex flex-row items-center px-2">
+    <div className="relative flex flex-row items-center w-fit px-2 py-2 md:mt-0 mt-1 md:rounded-none rounded-md md:border-none  border">
       <FaHome className="mr-2" />
       <h1
         className="text-gray-400 cursor-pointer"
@@ -54,7 +53,7 @@ function SerchType() {
         />
       )}
       {showDropdown && (
-        <div className="absolute top-10 w-96 left-0 bg-white p-2 shadow-md">
+        <div className="absolute md:top-10 md:w-96 top-10   md:left-0 right-0 z-50 bg-white p-2 shadow-md">
           {/* FIRST PROPERTY TYPE DROP DOWN CONTENT */}
           <div className="flex flex-col">
             <div
@@ -120,13 +119,13 @@ function SerchType() {
             </div>
             {showDropdown3 && (
               <div className="flex flex-col">
-                <div className="flex flex-wrap w-96">
+                <div className="flex flex-wrap w-fit">
                   <button
                     className="border border-black/50 rounded-full px-2 py-1 m-1"
                     onClick={() => handleButtonClick("Shop/Showroom")}
                     style={{
                       backgroundColor: selectedOptions.includes("Shop/Showroom")
-                        ? "pink"
+                        ? "Pink"
                         : "white",
                     }}
                   >
@@ -211,7 +210,7 @@ function SerchType() {
             </div>
             {showDropdown4 && (
               <div className="flex flex-col ">
-                <div className="flex flex-wrap w-96">
+                <div className="flex flex-wrap w-fit md:w-96">
                   <button
                     className="border border-black/50 rounded-full px-2 py-1 m-1"
                     onClick={() => handleButtonClick("Agricultural Land")}

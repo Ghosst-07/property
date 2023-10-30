@@ -7,16 +7,14 @@ import SerachButton from "./seachbarComponents/button";
 
 function SearchBox() {
   return (
-    <div className="w-screen  flex justify-center">
+    <div className=" flex justify-left md:ml-36 ">
       <div
-        className="m-10 w-fit h-16 border border-black/50 flex flex-row 
-    justify-center items-center rounded-full"
+        className="  border border-black/50 bg-white flex flex-wrap
+    justify-center items-center rounded-md"
       >
         <SearchCity />
-        <h1 className="text-xl font-extralight">|</h1>
 
         <SearchType />
-        <h1 className="text-xl font-extralight">|</h1>
 
         <SearchBudget />
 

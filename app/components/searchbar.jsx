@@ -9,7 +9,7 @@ function SearchBox() {
   return (
     <div className=" flex justify-left md:ml-36 ">
       <div
-        className="  border border-black/50 bg-white flex flex-wrap
+        className="  shadow-lg bg-white flex flex-wrap
     justify-center items-center rounded-md"
       >
         <SearchCity />

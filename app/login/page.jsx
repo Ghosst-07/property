@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import InputComponent from "../components/inputfield";
 
 const Login = () => {
   const [emailOrMobile, setEmailOrMobile] = useState("");
@@ -8,10 +9,6 @@ const Login = () => {
 
   const handleEmailOrMobileChange = (e) => {
     setEmailOrMobile(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -34,37 +31,26 @@ const Login = () => {
           </h1>
 
           <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 font-bold mb-2"
-                htmlFor="emailOrMobile"
-              >
-                Email or Mobile Number
-              </label>
-              <input
-                className="appearance-none border-b-2 border-gray-400 rounded w-full py-2 px-3 mb-5 text-gray-700 leading-tight focus:outline-none focus:border-pink-500"
-                id="emailOrMobile"
-                type="text"
+            <div className="mb-8">
+              {" "}
+              <InputComponent
+                label="Email or Mobile Number"
                 placeholder="Email or Mobile Number"
+                type="text"
                 value={emailOrMobile}
-                onChange={handleEmailOrMobileChange}
+                onChange={(newValue) => setEmailOrMobile(newValue)}
+                id="emailOrMobile"
               />
             </div>
 
-            <div className="mb-6">
-              <label
-                className="block text-gray-700 font-bold mb-2"
-                htmlFor="password"
-              >
-                Password
-              </label>
-              <input
-                className="appearance-none border-b-2 border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-5 leading-tight focus:outline-none focus:border-pink-500"
-                id="password"
-                type="password"
+            <div className="mb-10">
+              <InputComponent
+                label="Password"
                 placeholder="Password"
+                type="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={(newValue) => setPassword(newValue)}
+                id="passwordInput"
               />
             </div>
 

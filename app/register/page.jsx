@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import InputComponent from "../components/inputfield";
+import { FaEnvelope, FaLock, FaPhone, FaUser } from "react-icons/fa";
 
 const Register = () => {
   const [selectedOption, setSelectedOption] = useState("Buyer");
@@ -84,7 +85,7 @@ const Register = () => {
   return (
     <div
       className="flex justify-center items-center md:px-0 px-10 pt-8 md:pt-32 w-full h-screen bg-gray-100"
-      style={{ backgroundImage: "url('/login-bg.jpg')", backgroundSize: "10%" }}
+      style={{ backgroundImage: "url('/login-bg.jpg')", backgroundSize: "20%" }}
     >
       <div className="w-full max-w-md bg-white rounded-lg shadow-xl overflow-hidden">
         <div className="px-6 md:px-10 py-5">
@@ -131,6 +132,7 @@ const Register = () => {
               <InputComponent
                 placeholder="Email"
                 type="email"
+                Icon={FaEnvelope}
                 value={email}
                 onChange={(newValue) => setEmail(newValue)}
                 id="emailInput"
@@ -141,6 +143,7 @@ const Register = () => {
             </div>
             <div className="mb-6">
               <InputComponent
+                Icon={FaUser}
                 placeholder="Name"
                 type="text"
                 value={name}
@@ -153,6 +156,7 @@ const Register = () => {
             </div>
             <div className="mb-6">
               <InputComponent
+                Icon={FaLock}
                 placeholder="Password"
                 showButton={true}
                 type="password"
@@ -170,6 +174,7 @@ const Register = () => {
               </div>
               <h1 className="px-1">|</h1>
               <InputComponent
+                Icon={FaPhone}
                 placeholder="Mobile Number"
                 type="text"
                 value={number}
@@ -189,8 +194,9 @@ const Register = () => {
                   checked={policyAccepted}
                   onChange={handlePolicyChange}
                 />
-                <span className="ml-2 text-sm">
-                  I accept the <a href="#">policy and terms</a>
+                <span className="ml-2 text-sm">I agree to </span>
+                <span className="text-blue-500 hover:text-blue-700">
+                  T&C, Privacy Policy, & Cookie Policy
                 </span>
               </label>
               {errors.policyAccepted && (

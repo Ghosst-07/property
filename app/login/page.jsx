@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import InputComponent from "../components/inputfield";
+import { FaEnvelope, FaLock, FaMailBulk, FaUser } from "react-icons/fa";
 
 const Login = () => {
   const [emailOrMobile, setEmailOrMobile] = useState("");
@@ -21,7 +22,7 @@ const Login = () => {
       className="flex justify-center items-center  md:px-0 px-10 pt-8 md:pt-32 w-full h-screen bg-gray-100"
       style={{
         backgroundImage: "url('/login-bg.jpg')",
-        backgroundSize: "10%", // Add this line to scale the background image
+        backgroundSize: "20%", // Add this line to scale the background image
       }}
     >
       <div className="w-full max-w-md bg-white rounded-lg shadow-xl overflow-hidden">
@@ -34,6 +35,7 @@ const Login = () => {
             <div className="mb-8">
               {" "}
               <InputComponent
+                Icon={FaEnvelope}
                 label="Email or Mobile Number"
                 placeholder="Email or Mobile Number"
                 type="text"
@@ -45,6 +47,7 @@ const Login = () => {
 
             <div className="mb-10">
               <InputComponent
+                Icon={FaLock}
                 label="Password"
                 placeholder="Password"
                 type="password"

@@ -5,6 +5,7 @@ import NavBuy from "./navbarComponents/buy";
 import { NavSell } from "./navbarComponents/sell";
 import NavRent from "./navbarComponents/rent";
 import NavHelp from "./navbarComponents/help";
+import Link from "next/link";
 
 const Cities = [
   {
@@ -90,21 +91,25 @@ const Navbar = () => {
           </div>
         </div>
         {/* Right Side of navbar */}
-        <div className="flex items-center bg-red justify-end w-full  mb:pr-5">
-          <button className="text-black bg-white p-2 px-3 rounded-full hover:bg-white/90 mr-4 ">
-            <div className="flex flex-row justify-center items-center">
-              <FaHome className="mr-1" /> Post Property
-            </div>
-          </button>
 
-          <button
-            className="text-black bg-white p-2 px-3 mr-6 rounded-full 
+        <div className="flex items-center bg-red justify-end w-full  mb:pr-5">
+          <Link href="/postproperty">
+            <button className="text-black bg-white p-2 px-3 rounded-full hover:bg-white/90 mr-4 ">
+              <div className="flex flex-row justify-center items-center">
+                <FaHome className="mr-1" /> Post Property
+              </div>
+            </button>
+          </Link>
+          <Link href="/login">
+            <button
+              className="text-black bg-white p-2 px-3 mr-6 rounded-full 
            hover:bg-white/90  login-button"
-          >
-            <div className="flex flex-row justify-center items-center">
-              <FaUser className="mr-1" /> Login
-            </div>
-          </button>
+            >
+              <div className="flex flex-row justify-center items-center">
+                <FaUser className="mr-1" /> Login
+              </div>
+            </button>
+          </Link>
         </div>
       </nav>
       {/* Second Navbar */}

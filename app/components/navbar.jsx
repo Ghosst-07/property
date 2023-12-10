@@ -57,9 +57,13 @@ const Navbar = () => {
     <div className="fixed z-50">
       <nav className="flex h-16 bg-blue-950 ">
         <div className="flex items-center  ml-4">
-          <span className="text-white font-bold text-xl md:3xl mr-4">
-            PropertyKAKA
-          </span>
+          <Link href="/">
+            <div>
+              <span className="text-white font-bold text-xl md:3xl mr-4">
+                PropertyKAKA
+              </span>
+            </div>
+          </Link>
           <div className="Cities-dropdown flex flex-nowrap">
             {Cities.map((option) => (
               <div key={option.label} className="relative pl-4">

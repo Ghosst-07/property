@@ -1,5 +1,4 @@
 import React from "react";
-import { FaSearch, FaMapMarkerAlt, FaHome, FaRupeeSign } from "react-icons/fa";
 import SearchCity from "./seachbarComponents/city";
 import SearchType from "./seachbarComponents/type";
 import SearchBudget from "./seachbarComponents/budget";

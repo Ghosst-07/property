@@ -5,7 +5,7 @@ import InputComponent from "../components/inputfield";
 import { FaEnvelope, FaLock, FaPhone, FaUser } from "react-icons/fa";
 
 const Register = () => {
-  const [selectedOption, setSelectedOption] = useState("Buyer");
+  const [userType, setUserType] = useState("Buyer");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +20,7 @@ const Register = () => {
   });
 
   const handleOptionChange = (e) => {
-    setSelectedOption(e.target.value);
+    setUserType(e.target.value);
   };
 
   const handlePolicyChange = (e) => {
@@ -30,20 +30,45 @@ const Register = () => {
       policyAccepted: e.target.checked ? "" : "Policy must be accepted",
     }));
   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isValid = validateFields();
     if (isValid) {
-      console.log({
-        selectedOption,
-        email,
-        name,
-        password,
-        number,
-        policyAccepted,
-      });
-      // TODO: Add registration logic here
+      try {
+        const emailCheckAndNumber = await fetch("/api/checkEmail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            number,
+          }),
+        });
+
+        const response = await emailCheckAndNumber.json();
+
+        // Check the response for email and number existence
+        if (response.user === null) {
+          console.log("Registration process starts");
+        } else {
+          if (response.user.email === email) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              email: "Email already exists",
+            }));
+          }
+
+          if (response.user.number === parseInt(number)) {
+            setErrors((prevErrors) => ({
+              ...prevErrors,
+              number: "Number already exists",
+            }));
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -101,7 +126,7 @@ const Register = () => {
                     className="mr-2 leading-tight appearance-none bg-gray-200 rounded-full w-3 h-3 md:w-4 md:h-4 checked:bg-pink-600 checked:border-transparent focus:outline-none focus:shadow-outline"
                     type="radio"
                     value="Buyer"
-                    checked={selectedOption === "Buyer"}
+                    checked={userType === "Buyer"}
                     onChange={handleOptionChange}
                   />
                   <label className="text-gray-700">Buyer</label>
@@ -111,7 +136,7 @@ const Register = () => {
                     className="mr-2 leading-tight appearance-none bg-gray-200 rounded-full w-3 h-3 md:w-4 md:h-4 checked:bg-pink-600 checked:border-transparent focus:outline-none focus:shadow-outline"
                     type="radio"
                     value="Agent"
-                    checked={selectedOption === "Agent"}
+                    checked={userType === "Agent"}
                     onChange={handleOptionChange}
                   />
                   <label className="text-gray-700">Agent</label>
@@ -121,7 +146,7 @@ const Register = () => {
                     className="mr-2 leading-tight appearance-none bg-gray-200 rounded-full w-3 h-3 md:w-4 md:h-4 checked:bg-pink-600 checked:border-transparent focus:outline-none focus:shadow-outline"
                     type="radio"
                     value="Builder"
-                    checked={selectedOption === "Builder"}
+                    checked={userType === "Builder"}
                     onChange={handleOptionChange}
                   />
                   <label className="text-gray-700">Builder</label>

@@ -47,7 +47,7 @@ export default function InputComponent({
         {placeholder}
       </label>
       <input
-        className="border-b-2 border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-pink-500 pl-8"
+        className="border-b-2 border-gray-400 rounded w-full pb-3 pt-1  px-3 text-gray-700 leading-tight focus:outline-none focus:border-pink-500 pl-8"
         id={id}
         type={showPassword ? "text" : type}
         onFocus={handleFocus}

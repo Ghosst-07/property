@@ -1,11 +1,11 @@
 import React from "react";
-import SearchBox from "./searchbar";
+import SearchBox from "../searchbar";
 
 function MainContainer() {
   return (
-    <div className=" bg-blue-950 ">
-      <div className="flex justify-end">
-        <img src="/bg.png" alt="logo" className="absolute top-20" />
+    <div className=" bg-blue-950 flex h-[810px]">
+      <div className="flex mt-44  justify-end w-full h-[500px] absolute ">
+        <img src="/bg.png" alt="logo" className="" />
       </div>
       <div className="flex flex-col relative z-10">
         <h1 className="font-bold mt-40 ml-3 md:ml-40 md:mt-64 text-white text-4xl md:text-7xl">

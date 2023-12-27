@@ -51,6 +51,20 @@ const Register = () => {
         // Check the response for email and number existence
         if (response.user === null) {
           console.log("Registration process starts");
+          const res = await fetch("/api/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userType,
+              email,
+              name,
+              password,
+              number,
+            }),
+          });
+          console.log(res);
         } else {
           if (response.user.email === email) {
             setErrors((prevErrors) => ({

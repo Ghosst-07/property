@@ -1,3 +1,4 @@
+/* FILEPATH: /D:/JS PROJECTS/Poperty/property/app/globals.css */
 /* FILEPATH: /d:/JS PROJECTS/Poperty/property/app/globals.css */
 
 /* BEGIN: abpxx6d04wxr */
@@ -11,3 +12,23 @@
     -webkit-appearance: none;
   }
 }
+
+/* BEGIN: scrollbar-style */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+/* END: scrollbar-style */

@@ -3,23 +3,61 @@ import React, { useState } from "react";
 import Link from "next/link";
 import InputComponent from "../components/inputfield";
 import { FaEnvelope, FaLock, FaMailBulk, FaUser } from "react-icons/fa";
+import { signIn, useSession } from "next-auth/react";
+import { redirect, useRouter } from "next/navigation";
 
 const Login = () => {
-  const [emailOrMobile, setEmailOrMobile] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleEmailOrMobileChange = (e) => {
-    setEmailOrMobile(e.target.value);
-  };
+  const router = useRouter();
+  const { data: session } = useSession();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Add login logic here
+
+    if (!email && !password) {
+      setErrorMessage("Please fill all the fields");
+      return;
+    } else {
+      if (!password) {
+        setErrorMessage("Password is required");
+        return;
+      }
+
+      if (!email) {
+        setErrorMessage("Email is required");
+        return;
+      }
+    }
+
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (res.error) {
+        console.log(res.error);
+        setErrorMessage(res.error);
+      } else {
+        console.log(res);
+        router.replace("dashboard");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  if (session) {
+    router.replace("dashboard");
+  }
 
   return (
     <div
-      className="flex justify-center items-center  md:px-0 px-10 pt-8 md:pt-32 w-full h-screen bg-gray-100"
+      className="flex justify-center items-center  md:px-0 px-10 pt-8 md:pt-32 w-full h-screen bg-gradient-to-tl from-cyan-400 to-emerald-400"
       style={{
         backgroundImage: "url('/login-bg.jpg')",
         backgroundSize: "20%", // Add this line to scale the background image
@@ -31,6 +69,10 @@ const Login = () => {
             Login
           </h1>
 
+          {errorMessage && (
+            <div className="text-red-500 mb-4">{errorMessage}</div>
+          )}
+
           <form onSubmit={handleSubmit}>
             <div className="mb-8">
               {" "}
@@ -39,8 +81,8 @@ const Login = () => {
                 label="Email or Mobile Number"
                 placeholder="Email or Mobile Number"
                 type="text"
-                value={emailOrMobile}
-                onChange={(newValue) => setEmailOrMobile(newValue)}
+                value={email}
+                onChange={(newValue) => setEmail(newValue)}
                 id="emailOrMobile"
               />
             </div>

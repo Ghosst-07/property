@@ -6,6 +6,9 @@ import { NavSell } from "./navbarComponents/sell";
 import NavRent from "./navbarComponents/rent";
 import NavHelp from "./navbarComponents/help";
 import Link from "next/link";
+import { signIn, useSession } from "next-auth/react";
+
+const { data: session } = useSession();
 
 const Cities = [
   {
@@ -33,6 +36,8 @@ const MenuItems = [
 ];
 
 const Navbar = () => {
+  const [selectedcity, setSelectedCity] = useState("Cities");
+
   const [activeMenu, setActiveMenu] = useState(null);
 
   const handleHover = (menu) => {
@@ -54,8 +59,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed z-50">
-      <nav className="flex h-16 bg-blue-950 ">
+    <div className="fixed z-50 navbar">
+      <nav className="flex h-16 bg-gradient-to-tl from-cyan-400 to-emerald-400 ">
         <div className="flex items-center  ml-4">
           <Link href="/">
             <div>
@@ -66,12 +71,12 @@ const Navbar = () => {
           </Link>
           <div className="Cities-dropdown flex flex-nowrap">
             {Cities.map((option) => (
-              <div key={option.label} className="relative pl-4">
+              <div key={selectedcity} className="relative pl-4">
                 <button
                   className="text-white font-bold flex items-center"
                   onMouseEnter={() => handleHover(option.label)}
                 >
-                  {option.label} <FaAngleDown className="ml-1" />
+                  {selectedcity} <FaAngleDown className="ml-1" />
                 </button>
                 {activeMenu === option.label && (
                   <div
@@ -81,6 +86,10 @@ const Navbar = () => {
                     <ul className="py-2">
                       {option.items.map((item) => (
                         <li
+                          onClick={() => {
+                            setActiveMenu(null);
+                            setSelectedCity(item);
+                          }}
                           key={item}
                           className="hover:bg-gray-100 px-4 py-2 cursor-pointer"
                         >
@@ -105,14 +114,7 @@ const Navbar = () => {
             </button>
           </Link>
           <Link href="/login">
-            <button
-              className="text-black bg-white p-2 px-3 mr-6 rounded-full 
-           hover:bg-white/90  login-button"
-            >
-              <div className="flex flex-row justify-center items-center">
-                <FaUser className="mr-1" /> Login
-              </div>
-            </button>
+            {session ? <button>Signup</button> : <button>Login</button>}
           </Link>
         </div>
       </nav>

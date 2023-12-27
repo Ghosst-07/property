@@ -8,8 +8,6 @@ import NavHelp from "./navbarComponents/help";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 
-const { data: session } = useSession();
-
 const Cities = [
   {
     label: "Cities",
@@ -114,7 +112,11 @@ const Navbar = () => {
             </button>
           </Link>
           <Link href="/login">
-            {session ? <button>Signup</button> : <button>Login</button>}
+            <button className="text-black bg-white p-2 px-3 rounded-full hover:bg-white/90 mr-4 ">
+              <div className="flex flex-row justify-center items-center">
+                <FaUser className="mr-1" /> Login
+              </div>
+            </button>
           </Link>
         </div>
       </nav>

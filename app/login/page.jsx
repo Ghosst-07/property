@@ -5,11 +5,13 @@ import InputComponent from "../components/inputfield";
 import { FaEnvelope, FaLock, FaMailBulk, FaUser } from "react-icons/fa";
 import { signIn, useSession } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
+import CircularProgress from "../components/circularprogress";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
 
   const router = useRouter();
   const { data: session } = useSession();
@@ -37,10 +39,12 @@ const Login = () => {
     }
 
     try {
+      setIsLoading(true); // Set loading state to true
+
       const res = await signIn("credentials", {
         email,
         password,
-        redirect: true,
+        redirect: false,
       });
 
       if (res.error) {
@@ -52,6 +56,8 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false); // Set loading state to false
     }
   };
 
@@ -103,8 +109,13 @@ const Login = () => {
               <button
                 className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
                 type="submit"
+                disabled={isLoading} // Disable the button when loading
               >
-                Login
+                {isLoading ? (
+                  <CircularProgress text={"Authenticating"} />
+                ) : (
+                  "Login"
+                )}
               </button>
             </div>
           </form>

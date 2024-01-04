@@ -109,8 +109,8 @@ function SeconStep() {
       </div>
       <div className="pt-10">
         <button
-          className={`rounded-3xl px-5 py-3 bg-pink-500 text-white ${
-            isButtonDisabled ? "bg-gray-400 cursor-not-allowed" : ""
+          className={`rounded-3xl px-5 py-3 text-white ${
+            isButtonDisabled ? "bg-gray-400 cursor-not-allowed" : " bg-pink-500"
           }`}
           disabled={isButtonDisabled}
           onClick={() => {

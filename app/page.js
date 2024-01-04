@@ -5,6 +5,7 @@ import ThirdContainer from "./components/Home-Containers/thirdContainer";
 export default function Home() {
   return (
     <>
+    
       <MainContainer />
       <SecondContainer />
       <ThirdContainer />

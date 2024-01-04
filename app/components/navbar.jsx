@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { FaAngleDown, FaHome, FaUser } from "react-icons/fa";
+import { FaAngleDown, FaDashcube, FaHome, FaUser } from "react-icons/fa";
 import NavBuy from "./navbarComponents/buy";
 import { NavSell } from "./navbarComponents/sell";
 import NavRent from "./navbarComponents/rent";
@@ -56,6 +56,7 @@ const Navbar = () => {
     setActiveMenu(null);
   };
 
+  const { data: session } = useSession();
   return (
     <div className="fixed z-50 navbar">
       <nav className="flex h-16 bg-gradient-to-tl from-cyan-400 to-emerald-400 ">
@@ -111,10 +112,11 @@ const Navbar = () => {
               </div>
             </button>
           </Link>
-          <Link href="/login">
+
+          <Link href={session ? "/dashboard" : "/login"}>
             <button className="text-black bg-white p-2 px-3 rounded-full hover:bg-white/90 mr-4 ">
               <div className="flex flex-row justify-center items-center">
-                <FaUser className="mr-1" /> Login
+                <FaUser className="mr-1" /> {session ? "Profile" : "Login"}
               </div>
             </button>
           </Link>

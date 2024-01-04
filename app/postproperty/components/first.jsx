@@ -346,8 +346,6 @@ function FirstStep() {
           disabled={isContinueButtonDisabled()}
           onClick={() => {
             addOneStep();
-            addOneStep();
-            addOneStep();
           }}
         >
           Continue

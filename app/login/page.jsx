@@ -14,6 +14,10 @@ const Login = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
+  if (session) {
+    redirect("dashboard");
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -50,10 +54,6 @@ const Login = () => {
       console.log(error);
     }
   };
-
-  if (session) {
-    router.replace("dashboard");
-  }
 
   return (
     <div

@@ -40,7 +40,7 @@ const Login = () => {
       const res = await signIn("credentials", {
         email,
         password,
-        redirect: false,
+        redirect: true,
       });
 
       if (res.error) {
@@ -48,7 +48,7 @@ const Login = () => {
         setErrorMessage(res.error);
       } else {
         console.log(res);
-        router.replace("dashboard");
+        redirect("dashboard");
       }
     } catch (error) {
       console.log(error);
